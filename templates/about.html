@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% set title="About me" %}
+{% set active_page="about" %}
+
+{% block body %}
+
+{% filter markdown %}
+
+* [Email: m_graeb11@cs.uni-kl.de](mailto:m_graeb11@cs.uni-kl.de)
+* [Github: @koppa](https://github.com/koppa)
+* [Facebook](https://www.facebook.com/mgraeb)
+* [Instagram @koppa42](https://www.instagram.com/koppa42/)
+
+
+
+The source code of the page can be viewed in github: [github.com/koppa/koppa.git](https://github.com/koppa/koppa.github.io).
+The generation of the page is done with [flask](http://flask.pocoo.org/) and flask-freeze.
+The theme is based on the  [sakura.css](https://github.com/oxalorg/sakura) script.
+
+
+{% endfilter %}
+
+
+{% endblock %}

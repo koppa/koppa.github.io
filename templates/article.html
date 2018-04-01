@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% set title = article.title %}
+{% set active_page = "articles" %}
+{% set date=article.date %}
+{% block body %}
+
+    <!-- author: {{article.author}} -->
+
+{{article.text | safe}}
+
+{% endblock %}
+
+{% block js %}
+{% endblock %}

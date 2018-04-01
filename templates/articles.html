@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% set title = "Projects" %}
+{% set active_page = "articles" %}
+
+{% block body %}
+
+    {% if not articles %}
+        <p>No articles yet published :(.</p>
+    {% endif  %}
+<ul>
+    {% for article in articles %}
+    <li>
+        <a href="{{url_for('article', name=article.name)}}">
+            <span style='width: 20ch; display: inline-block'>{{ article.date }}</span> {{article.title}}
+        </a>
+    </li>
+    {%endfor %}
+</ul>
+
+
+{% endblock %}

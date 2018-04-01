@@ -1,0 +1,82 @@
+{# 
+    TODO document me
+
+        variables
+            * date
+            * active_page
+            * title
+
+
+        blocks:
+            * body
+            * javascript?
+#}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="Markus Gräb">
+
+    <title>Markus' Homepage</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='normalize.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sakura.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='template.css') }}" type="text/css">
+</head>
+
+<body>
+
+
+{% set navigation_bar = [
+    ('index', 'Index'),
+    ('articles', 'Articles / Projects'),
+    ('photos', 'Photography'),
+    ('about', 'About') ] %}
+
+{# set active_page in layout #}
+{% set active_page = active_page | default('index') %}
+
+<div id=main>
+    <div id=nav>
+        <ul>
+            {% for ref, name in navigation_bar %}
+
+                {% if ref == active_page %}
+                    <li class="active">
+                        {% else %}
+                    <li>
+                {% endif %}
+                <a href="{{ url_for(ref) }}"> {{ name }} </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+    <div id="content">
+        <div id=content_header>
+            <h1>{{ title }}</h1>
+            {% if date %}
+                <div id=date>
+                    <div>{{date}}</div>
+                </div>
+            {% endif %}
+        </div>
+        <hr/>
+        {% block body %}
+        {% endblock %}
+    </div>
+
+</div>
+
+<link href="{{ url_for('static', filename='roboto/roboto.css') }}" rel="stylesheet">
+
+
+{% block js %}
+{% endblock %}
+</body>
+</html>

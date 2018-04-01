@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% set title="Hi, I'm Markus Gräb" %}
+{% set active_page = "index" %}
+
+{% block body %}
+
+    <h5>
+        Coding, Photographing, Cooking and Nature nut
+    </h5>
+
+    <img src="{{ url_for('static', filename='title_resized.jpg') }}" />
+
+    <p>
+        Some projects of mine.
+    </p>
+
+    <p>
+        My github account: <a href="https://github.com/koppa">https://github.com/koppa</a>
+    </p>
+
+    <p>
+        Contact me under: <a href="mailto:markus.graeb@gmail.com">markus.graeb@gmail.com</a>
+    </p>
+
+    <p>
+        Instagram: <a href="http://instagram.com/koppa42">@koppa42</a>
+    </p>
+
+
+    <p>
+        <b>Note</b>:
+        The page is still work in progress and a lot of content is still missing!
+    </p>
+
+
+
+{% endblock %}

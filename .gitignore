@@ -5,3 +5,5 @@ __pycache__
 virtualenv
 *.swo
 *.swp
+build
+Pipfile.lock

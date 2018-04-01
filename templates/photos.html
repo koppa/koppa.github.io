@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% set title = "My Photographs" %}
+{% set active_page = "photos" %}
+
+{% block body %}
+
+    <p>
+        I'm a notorious snapshot shooter.
+        Here are some excerpts of my work.
+    </p>
+
+    <p>
+        For some current images take a look at my instagram account
+        <a href="https://www.instagram.com/koppa42/">@koppa42</a>
+    </p>
+
+
+
+    Themes:
+    <ul>
+        {% for name in photos.keys() %}
+            <li>
+                <a href="#{{ name }}">{{ name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+    <div>
+        {% for name, group in photos.items() %}
+            <h2 id="{{ name }}">{{ name }}</h2>
+            {% for photo in group %}
+                <div class="photocard">
+                    <div class="imgcontainer">
+                        <img src="{{ photo.url }}"/>
+                    </div>
+                    <div class="imgtext">
+                        <!-- Title: {{ photo.title }} -->
+                        {{ photo.desc }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+    </div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}
