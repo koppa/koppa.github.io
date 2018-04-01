@@ -1,0 +1,7 @@
+virtualenv
+.idea
+*.iml
+__pycache__
+virtualenv
+*.swo
+*.swp
