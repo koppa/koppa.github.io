@@ -1,0 +1,100 @@
+body {
+    font-family: Roboto, sans-serif !important;
+}
+
+#nav {
+    position: fixed;
+    top: 200px;
+    width: 200px;
+    left: 0px;
+    font-weight: bolder;
+}
+
+#nav li {
+    list-style-type: none;
+}
+
+#nav li.active {
+    text-decoration: underline;
+}
+
+#content {
+    width: 700px;
+    /*
+    margin-left: 200px;
+    margin-top: 200px;
+        */
+}
+
+#content_header  {
+width: 100%;
+}
+#content_header #date {
+    font-size: small;
+    text-align: right;
+    width: 100%;
+    height: 0px;
+}
+
+#content_header #date div {
+position: relative;
+top: -1em;
+}
+
+#content_header h1 {
+}
+
+/* Highlight anchored elements */
+#content :target {
+    background-color: #2c8898;
+    color: #f9f9f9;
+}
+
+@media only screen and (max-width: 1050px), only screen and (max-height: 300px) {
+    #content {
+        width: 100%;
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+
+    #nav {
+        position: relative;
+        top: 0px;
+        width: 100%;
+    }
+
+    #nav li {
+       display: inline-block;
+        padding: 12px;
+    }
+}
+
+/*******************************************
+* Gallery
+*/
+
+.photocard {
+
+    /* background: green; */
+    margin: 5px;
+}
+
+.photocard .imgcontainer {
+    padding: 5px 5px 0px;
+}
+
+.photocard .imgcontainer img {
+}
+
+.photocard .imgtext {
+
+}
+
+
+/*******************************************
+* Articles
+*/
+
+/*figure {
+    background-color: grey;
+} */
