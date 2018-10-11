@@ -76,11 +76,13 @@ top: -1em;
 .photocard {
 
     /* background: green; */
-    margin: 5px;
+    /* Space between and more between each card */
+
+    margin: 5px 5px 15px 0px;
 }
 
 .photocard .imgcontainer {
-    padding: 5px 5px 0px;
+    padding: 5px 0px 5px 0px;
 }
 
 .photocard .imgcontainer img {
