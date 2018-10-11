@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="403" height="403" viewBox="0 0 100 100">
+  <defs>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css?family=Barlow+Condensed');
+    </style>
+  </defs>
+
+<rect x="1.75" y="1.75" rx="50" ry="50" width="96.5" height="96.5" fill="#2c8898"></rect>
+
+<text x="50" y="50" dx="0" dy="-4" fill="#ffffff" font-size="70" font-family="Barlow Condensed" text-anchor="middle" dominant-baseline="central">MG</text>
+
+<rect x="1.75" y="1.75" rx="50" ry="50" width="96.5" height="96.5" fill-opacity="0" stroke="#FFF" stroke-width="3.5"></rect>
+</svg>

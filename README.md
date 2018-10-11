@@ -12,6 +12,10 @@ Template for new article (pandoc used as converter)
 
 # TODO
 
+* Small:
+    * Fix favicon configuration in base html
+    * Fix alpha in favicon?
+
 * Move fonts to own webspace
 * Add titles and description to images 
 * Fill about

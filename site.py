@@ -3,6 +3,7 @@ import re
 from collections import namedtuple
 from pathlib import Path
 from sys import argv
+from itertools import chain
 
 from datetime import datetime
 import exifread
@@ -25,28 +26,50 @@ app.jinja_env.auto_reload = True
 
 Photo = namedtuple('Photo', ['url', 'title', 'desc'])
 
-FOTODIR = Path('static/photos')
+PHOTODIR = Path('static/photos')
 
-def format_date(inpstr):
-    """ 2017:12:10 16:28:51 ==> December 2017 """
+ALLOWED_EXTENSIONS = ['.png', '.jpg', '.jpeg']
+
+
+def create_photo(f):
+    """
+        Take a path to a photo
+        Return Photo object with description
+    """
 
     # just strip the clock
-    dt = datetime.strptime(str(inpstr), "%Y:%m:%d %H:%M:%S")
-    return dt.strftime("%B %Y")
+    exifdate = exifread.process_file(f.open('rb'))['EXIF DateTimeOriginal']
+    dt = datetime.strptime(str(exifdate), "%Y:%m:%d %H:%M:%S")
+    formatted_date = dt.strftime("%B %Y")
 
-print(format_date("2017:12:10 16:28:51"))
-assert format_date("2017:12:10 16:28:51") == "December 2017"
+    return Photo(url=url_for('static', filename='/'.join(f.parts[-3:])),
+                 title=f,
+                 desc=formatted_date)
+
+
+def _get__photos_subdir(path):
+    """
+        Take a path and return a list of Photo objects
+    """
+    return [create_photo(f) for f in path.iterdir()
+            if f.is_file() and f.suffix in ALLOWED_EXTENSIONS]
+
+
 def get_photos():
-    files = {f.name: [f_ for f_ in f.iterdir()] for f in FOTODIR.iterdir() if f.is_dir()}
-    # files['nogroup'] = [f for f in FOTODIR.iterdir()]
+    """
+        Return a dict of photos grouped by keyword
 
-    return {group: [Photo(url=url_for('static',
-                                      filename='/'.join(f.parts[-3:])),
-                          title=f,
-                          desc=f"{format_date(exifread.process_file(f.open('rb'))['EXIF DateTimeOriginal'])}")
-                    for f in fs if f.is_file() and f.name.endswith('.jpg')]
-            for group, fs in files.items()}
+    """
 
+    photos = {f.name: _get__photos_subdir(f)
+              for f in PHOTODIR.iterdir()
+              if f.is_dir()}
+
+    ng = _get__photos_subdir(PHOTODIR)
+    if ng:
+        photos['nogroup'] = ng
+
+    return photos
 
 @app.route('/')
 @app.route('/index.html')
@@ -56,6 +79,16 @@ def index():
 
 Article = namedtuple("Article", ['title', 'name', 'author', 'date', 'text'])
 ARTICLEPATH = Path('articles')
+ARTICLE_NOT_PUBLISHED = Path('not_published')
+
+
+def article_files():
+    if app.debug:
+        return [f for f in chain(ARTICLEPATH.iterdir(),
+                                 ARTICLE_NOT_PUBLISHED.iterdir())
+                if f.is_file()]
+
+    return [f for f in ARTICLEPATH.iterdir() if f.is_file()]
 
 
 @app.route('/articles.html')
@@ -64,17 +97,17 @@ def articles():
 
 
 def articles_all():
-    out = []
-    for f in ARTICLEPATH.iterdir():
-        assert f.is_file()
-        out.append(article_get(f))
-    return out
+    return [article_get(f) for f in article_files()]
 
 
 def article_get(file):
     if isinstance(file, str):
-        file = list(ARTICLEPATH.glob( f"{file}.*"))[0]
-
+        for f in article_files():
+            if f.name.startswith(f"{file}."):
+                file = f
+                break
+        else:
+            raise KeyError(f"Requesting article {file} and can't be found.")
 
     jsonstring = pypandoc.convert_text(file.open('r').read(),
                                        'html5', 'markdown',
