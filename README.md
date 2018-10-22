@@ -16,9 +16,10 @@ Template for new article (pandoc used as converter)
     Content
 
 ## TODO
-
-* Fill about
-* Add more images and sort them
+* Fix instagram widget, the width is not correct?
+    * Open source plugin for js http://instafeedjs.com
+        -- is simple and straightforward
+    * Sonst jquery plugin https://github.com/adrianengine/jquery-spectragram/#readme
 * Document Projects
     * In progress
         * NN
@@ -27,9 +28,3 @@ Template for new article (pandoc used as converter)
         * matplotlib-sixel
     * ADS-B / ADS-B Sniffer
     * moviedb
-* Index
-    * Write text
-    * ....
-
-#Notes
-
