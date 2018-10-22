@@ -1,5 +1,10 @@
 #My personal homepage
 
+Run from clean setup:
+
+    pipenv install
+    pipenv run python site.py
+
 Notes:
 
 Template for new article (pandoc used as converter)
