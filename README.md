@@ -17,7 +17,6 @@ Template for new article (pandoc used as converter)
 
 ## TODO
 
-* Add titles and description to images 
 * Fill about
 * Add more images and sort them
 * Document Projects
