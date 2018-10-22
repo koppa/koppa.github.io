@@ -5,7 +5,7 @@ Run from clean setup:
     pipenv install
     pipenv run python site.py
 
-Notes:
+##Notes:
 
 Template for new article (pandoc used as converter)
 
@@ -15,11 +15,7 @@ Template for new article (pandoc used as converter)
 
     Content
 
-# TODO
-
-* Small:
-    * Fix favicon configuration in base html
-    * Fix alpha in favicon?
+## TODO
 
 * Move fonts to own webspace
 * Add titles and description to images 
