@@ -31,8 +31,6 @@ Template for new article (pandoc used as converter)
 * Index
     * Write text
     * ....
-* Not important
-    * Check whether the font import works correctly (path correct?)
 
 #Notes
 
