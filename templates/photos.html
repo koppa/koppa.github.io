@@ -16,9 +16,22 @@
     </p>
 
     <p>
-<!-- InstaWidget -->
-<a href="https://instawidget.net/v/user/koppa42" id="link-1e50f160fae2e2ecee7b790eee223cb2e816d5cdc565ab46855a516893fe7d86">@koppa42</a>
-<script src="https://instawidget.net/js/instawidget.js?u=1e50f160fae2e2ecee7b790eee223cb2e816d5cdc565ab46855a516893fe7d86&width=650px"></script>
+        
+<script type="text/javascript">
+    // get the images of my instagram feed
+    var feed = new Instafeed({
+        get: 'user',
+        userId: '5506502776',
+        clientId: 'b3f2023c66fd4e7495bac6fd62306ed6',
+        accessToken: '5506502776.1677ed0.ad9c13401b6144b3a8a5bb11eb0c7589',
+        limit: 4
+    });
+    feed.run();
+</script>
+
+        The newest images from my instagram feed:
+        <div id='instafeed'>
+        </div>
     </p>
 
 
