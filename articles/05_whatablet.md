@@ -1,18 +1,24 @@
 % Whatablet
 % Markus Gräb
-% 18.4.2018
-
-TODO 
-
-* Add screenshots
+% 23rd October 2018
 
 
 This is a basic wrapper around the Whatsapp web client, which cannot be accessed
 with the android web browser.
 
-Therefore I programmed a small wrapper around the the webpage in order to use this interface efficiently.
+Features:
+
+* Record and listen to voice messages
+* Send images from the phone
+
+Currently missing:
+
+* Notification support
 
 Technologies used:
 
 * Android
 * Kotlin
+
+Link to the project:  
+<https://github.com/koppa/Whatablet.git>

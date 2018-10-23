@@ -20,7 +20,6 @@ Template for new article (pandoc used as converter)
     * In progress
         * NN
         * Sous vide
-        * Whatablet
         * matplotlib-sixel
     * ADS-B / ADS-B Sniffer
     * moviedb

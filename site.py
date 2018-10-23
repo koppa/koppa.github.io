@@ -83,7 +83,7 @@ ARTICLE_NOT_PUBLISHED = Path('not_published')
 
 
 def article_files():
-    if app.debug:
+    if app.debug and ARTICLE_NOT_PUBLISHED.exists():
         return [f for f in chain(ARTICLEPATH.iterdir(),
                                  ARTICLE_NOT_PUBLISHED.iterdir())
                 if f.is_file()]
